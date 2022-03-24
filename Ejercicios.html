@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ejercicios</title>
+</head>
+<body>
+        <div id="hola"></div>
+	<script type="text/javascript">
+//1-contar caracteres de una cadena
+        function contar(e) {return e.length;}
+        console.log("1- " + contar("Hola Mundo"));
+//2-recortar el inicio de una cadena
+        function recortar(txt,cut) {
+        for(let letra in txt){
+        if (letra > cut){return txt.substring(0, cut);}}}
+        console.log("2- " + recortar("Hola Mundo",6)); 
+//3-separar una cadena por una caracter
+        function separador(txt,sep) {return txt.split(sep);}       
+        console.log("3- " + separador("Hola Mundo",""));
+//4-repetir una cadena x numero de veces
+        function repetir(txt,num) {
+        let aux="";
+        for(let i=0; i<num; i++){aux = txt + " " + aux;}
+        return aux;}
+        console.log("4- " + repetir("Hola Mundo",6));
+//5-invertir una cadena
+        function invertir(e) {return e.split("").reverse().join("");}
+        console.log("5- " + invertir("Hola Mundo"));
+//6-encontrar la cantidad de una palabra en una cadena
+        function encontrar(txt,pal) {
+        let aux = txt.toLowerCase().split(" ");
+        let aux1=0;
+        for(let palabra of aux){
+        if (palabra == pal){aux1++;}}
+        return aux1;}
+        console.log("6- " + encontrar("Mundo mundo MUNDO Hola hola HOLA Mundo mundo MUNDO","hola"));
+//7-saber si una cadena es un palindromo
+        function palindromo(txt) {
+        let auxa = txt.toLowerCase().split(" ").reverse().join(" ");
+        let auxb = txt.toLowerCase();
+        if (auxa == auxb){return "Es palindromo";}
+        else {return "No es palindromo";}}
+        console.log("7- " + palindromo("Neuquen neuquen NEUQUEN"));
+//8-elimina un patron en una cadena
+        function eliminapatron(txt,inc) {
+        let aux="";
+        let texto = txt.split(" ");
+        for(let palabra of texto){aux = aux + " " + palabra.replace(inc, "");}
+        return aux;}
+        console.log("8- " + eliminapatron("zxHola zxMundo zx=) Hola Mundo =)","zx"));
+//9-numero ramdom entre 501 y 600
+        function random(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;}
+        console.log("9- " + random(501,600) + " hhhhhhhhhhhhhhhhhhhhhhhh");
+//10-el numero es capicua
+        function capicua(num) {
+        let aux = num.toString().split("").reverse().join("");
+        if (aux == num) {return "Es capicua";}
+        else {return "No es capicua";}}
+        console.log("10- " + capicua(503));
+//11-calcular el factorial de un numero (sumar todos los numeros desde 0 a n)
+        function factorial(num){
+        let aux=0;
+        let i;
+        for(i=1; i<=num; i++){aux = i + aux;}
+        return aux}
+        console.log("11- " + factorial(4));
+//12-numeros primos
+        function primo(num) {
+        if(num == 0 || num == 1 || num == 4) {return "No es primo";}
+        for(let i = 2; i < (num / 2); i++) {
+        if(num % i == 0) {return "No es primo";}}
+        return "Es primo";}
+        console.log("12- " + primo(7));// 6 no primo 7 primo
+//13-par o impar
+        function parimpar(num){
+        let aux = num / 2;
+        if (aux%1==0){return "Es par";}
+        else {return "Es impar";}}
+        console.log("13- " + parimpar(5));
+//14-celsius a fahrenheit (°C × 9/5) + 32 = °F | (°F - 32) × 5/9 = °C
+        function caf(c) {return f = c*(9/5)+32;}
+        function fac(f) {return c = (f - 32)*(5/9);}
+        console.log("14 A- " + caf(25));
+        console.log("14 B- " + fac(45));
+//15-binario a decimal
+        function BaD(num) {
+        let aux = num.toString();
+        return parseInt(aux, 2);}
+        function DaB(num) {return num.toString(2);}
+        console.log("15 A- " + BaD(101011));
+        console.log("15 B- " + DaB(43));
+//16-% descuento
+        function descuento(num,des) {return num - ((num*des)/100);}
+        console.log("16- " + descuento(1000,20));
+//17-cuanto tiempo paso desde tal fecha
+        //dia 86400000 milisegundos
+        //mes 2628000000 milisegundos
+        //año 31540000000 milisegundos
+        function cuantopaso(ano,mes,dia) {
+        let hoy = new Date();
+        let fecha = new Date(`${ano}-${mes}-${dia}`);
+        let cuantopaso = hoy - fecha;
+        let aa = Math.floor(cuantopaso / 31540000000);
+        cuantopaso = cuantopaso - (aa * 31540000000);
+        let mm = Math.floor(cuantopaso / 2628000000);
+        cuantopaso = cuantopaso - (mm * 2628000000);
+        let dd = Math.floor(cuantopaso / 86400000);
+        cuantopaso = cuantopaso - (dd * 86400000);
+        return `Han pasado ${aa} años, ${mm} meses,  ${dd} dias`;}
+        console.log("17- " + cuantopaso(2022,1,1));
+//18-dada una cadena encontrar la cantidad de vocales y consonantes
+        function vocalescosonantes(array) {
+        let espacios=0;
+        for (let espacio of array){if(espacio==" "){espacios++;}}
+        let vocales = array.split("").filter(vocales => /[aeiouAEIOU]/.test(vocales));
+        let consonates = (array.length - vocales.length) - espacios;
+        return `Hay ${vocales.length} vocales y ${consonates} consonates`;}
+        console.log("18- " + vocalescosonantes("hola MUNDO"));
+//19-dado un array de numeros devolver otro pero elevado al cuadrado
+        function cuadrado(array) {
+        let auxa = array.split("");
+        let auxb =[];
+        for(let i =0; i<auxa.length; i++){auxb = auxb + " " + Math.pow(auxa[i],2);}
+        return auxb;}
+        console.log("19- " + cuadrado("2468"));
+//20-dado un array de numeros devolver el numero mas alto y el mas bajo
+        function altobajo(array) {
+        let aux = array.split("");
+        let alto = aux[0];
+        let bajo = aux[0];
+        for(let numero of aux){if(numero > alto){alto = numero;}}
+        for(let numero of aux){if(numero < bajo){bajo = numero;}}
+        return `El numero mas alto es ${alto} y el numero mas bajo es ${bajo}`;}
+        console.log("20- " + altobajo("2468"));
+//21-dado un array de numeros devolver pares e impares
+        function lospareimpar(array) {
+        let aux = array.split("");
+        let par = [];
+        let impar = [];
+        for(let i=0; i<aux.length; i++){
+        let auxfor = aux[i] / 2;
+        if (auxfor%1==0){par[i] = aux[i];}
+        else {impar[i] = aux[i];}}
+        par = par.join("");
+        impar = impar.join("");
+        return `Los numeros pares son ${par} y los impares son ${impar}`;}
+        console.log("21- " + lospareimpar("123456789"));
+//22-dado un array de numeros devolver otro ordenado de mayor a menor y viceversa
+        function orden(array) {
+        let mM = array.split("").sort((a,b)=>a-b);
+        let m = array.split("").sort((a,b)=>a-b).reverse();
+        return `El orden de menor a mayor es ${mM} El orden de mayor a menor es ${m}`;}
+        console.log("22- " + orden("5428730619"));
+//23-elimina los elementos duplicados de un arreglo
+        function duplicados(arreglo) {
+        let myset = new Set(arreglo);
+        return Array.from(myset);}
+        console.log("23- " + duplicados(["hola", 1, 3, 2, 2, 2, 3, 3, 1, 1, "hola"]));
+//24-dado un array de numeros devolver el promedio
+        function promedio(array) {
+        let arraynum = parseInt(array);
+        let total=0;
+        for(let numero of array){
+        numero = parseInt(numero, 10);
+        total = numero + total;}
+        return total/array.length;}
+        console.log("24- " + promedio("578"));
+//25-dibujar un los bordes de una cuadrado con # en consola
+        function dibujo(ancho,alto) {
+        let lineasinteriores = "";
+        let margenes = "";
+        let interior = "";
+        for(let i=0; i<ancho; i++){margenes = "#" + margenes;}
+        for(let i=0; i<ancho; i++){
+        if(i==0){lineasinteriores = "#";}
+        if(i==(ancho-2)){lineasinteriores = lineasinteriores + "#";}
+        else{lineasinteriores = lineasinteriores + " ";}}
+        for(let i=0; i<(alto-2); i++){interior = lineasinteriores + "\n" + interior;}
+        return `\n${margenes}\n${interior}${margenes}`;}
+        console.log("25- " + dibujo(4,4));
+//26-duplicados
+        const textoA = "bici coche balón _playstation bici coche peluche";
+        function duplicadosA(txt){
+                let duplicado = [];
+                let texto = txt.split(" ").sort()
+                for(let i = 0; i < texto.length; i++){
+                        if(texto[i]===texto[i+1]){duplicado.push(texto[i])}
+                }
+        return duplicado
+        }
+        console.log("26- " + duplicadosA(textoA));
+//27-suma con formularios
+        function sumaconformulario() {
+        let html = document.getElementById('hola');
+
+        let formulario = document.createElement("form");
+        let input1 = document.createElement("input");
+        input1.type = "number";
+        input1.id = "numero1";
+        let input2 = document.createElement("input");
+        input2.type = "number";
+        input2.id = "numero2";
+        let boton = document.createElement("input");
+        boton.type = "button";
+        boton.value = "suma";
+        boton.id = "sumar";
+        let h1 = document.createElement("h1");
+        
+        formulario.appendChild(input1);
+        formulario.appendChild(input2);
+        formulario.appendChild(boton);
+        html.appendChild(formulario);
+        html.appendChild(h1);
+
+        let sumar = document.getElementById('sumar');
+        sumar.onclick = function suma() {
+        h1.textContent = "";
+        let numero1 = document.getElementById('numero1').value;
+        let numero2 = document.getElementById('numero2').value;
+        let resultado = parseFloat(numero1) + parseFloat(numero2);
+        let contenidoh1 = document.createTextNode(resultado);
+        h1.appendChild(contenidoh1);}
+        return "se imprime en el DOM";}
+        console.log("27- " + sumaconformulario());
+//28-imprimir numeros del 1 al 100 si es multiplo de 3 imprimir FIZZ si es multiplo de 5 imprimir BUZZ y es multiplode a 3 y 5 imprimir FIZZBUZZ
+        function FIZZBUZZ() {
+        let obj=[];
+        for(let i=1; i<=100; i++){
+                if((i%3==0) && (i%5==0)){
+                        obj.push(" FIZZBUZZ ");
+                        continue;}
+                if(i%3==0){obj.push(" FIZZ ")}
+                if(i%5==0){obj.push(" BUZZ ")}
+                if(!(i%3==0) && !(i%5==0)){obj.push(` ${i} `)}}
+        return obj;
+console.log(obj)}
+        console.log("28- " + FIZZBUZZ());
+
+
+//fetch API https://pokeapi.co/api/v2/pokemon/ditto
+        let idpoke = "ss";
+        fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+        .then(response => response.json())
+        //.then(data => console.log(data))
+        .then(function datos(data) {
+                let html = document.getElementById('hola');
+                let h1 = document.createElement("h1");
+                html.appendChild(h1);
+
+                let contenidoh1 = document.createTextNode(data.id);
+                h1.appendChild(contenidoh1);
+
+                idpoke = JSON.stringify(data.id);
+                console.log(idpoke);
+        })
+        .catch(err => console.log("EL ERROR ES " + err))
+        </script>
+</body>
+</html>

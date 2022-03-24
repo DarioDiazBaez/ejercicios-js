@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ejercicios2</title>
+</head>
+<body>
+	<script type="text/javascript">
+//1-dado un string formado por (),[],{}, escribe un programa que indique si los pares correspondientes son correctos
+//entrada [()]{}{[()()]()} CORRECTO entrada [(]) INCORRECTO
+	let test1 ="(())";
+	let test2 ="({()()}[()])";
+	let test3 ="{[}()]";
+
+	function isopem(character) {
+		return["(","[","{"].includes(character)//sentence.includes(word)
+	}
+
+	function closes(charA,charB){
+		let pairs = {//json
+			"(": ")",
+			"[": "]",
+			"{": "}"
+		};
+		// console.log(charA,"charA")
+		// console.log(charB,"charB")
+		// console.log(pairs[charA] === charB)
+		return pairs[charA] === charB;
+	}
+
+	function validar(txt) {
+		let stack = [];
+		for(let character of txt.split("")){
+			if(isopem(character)){
+				stack.push(character);
+			}else{
+				let topChar = stack.pop();
+				if(!closes(topChar,character)){return false}
+			}
+		}
+		return stack.length === 0;
+	}
+	console.log(validar(test1));
+	console.log(validar(test2));
+	console.log(validar(test3));
+	console.log("------1------");
+//2-Considera una lista/array de ovejas. Cada oveja tiene un nombre y un color. Haz una función que devuelva una lista con todas las ovejas que sean de color rojo y que además su nombre contenga tanto las letras n Y a, sin importar el orden, las mayúsculas o espacios.
+	const ovejas = [
+  { name: 'Noa', color: 'azul' },
+  { name: 'Euge', color: 'rojo' },
+  { name: 'Navidad', color: 'rojo' },
+  { name: 'Ki Na Ma', color: 'rojo'},
+  { name: 'AAAAAaaaaa', color: 'rojo' },
+  { name: 'Nnnnnnnn', color: 'rojo'}
+]
+
+	function contarOvejas(ovejas) {
+  		let rojas = [];
+  		let nya = [];
+
+  		function contineNyA(n) {
+  			let name = n.toLowerCase().split("")
+  			if(name.includes("a") && name.includes("n"))
+  				{return true}
+  			else
+  				{return false}
+  		}
+
+  		for(let oveja of ovejas){
+    		if(oveja.color === "rojo"){rojas.push(oveja)}
+  		}//console.log(rojas)
+
+  		for(let roja of rojas){
+    		if(contineNyA(roja.name)){nya.push(roja)}
+  		}//console.log(nya)
+  		return nya
+}
+	console.log(contarOvejas(ovejas));
+	console.log("------2------");
+//3-Transforma un texto a un objeto que contenga el nombre de cada regalo y las veces que aparece. excluyendo si empieza con "_"
+	const txt = "bici coche balón _playstation bici coche peluche";
+	function contar(txt){
+		let texto = txt.split(" ")
+		for(let palabra of texto){
+			
+		}
+	}
+	contar(txt)
+	</script>
+</body>
+</html>
