@@ -79,14 +79,29 @@
 	console.log(contarOvejas(ovejas));
 	console.log("------2------");
 //3-Transforma un texto a un objeto que contenga el nombre de cada regalo y las veces que aparece. excluyendo si empieza con "_"
-	const txt = "bici coche balón _playstation bici coche peluche";
-	function contar(txt){
-		let texto = txt.split(" ")
-		for(let palabra of texto){
-			
-		}
-	}
-	contar(txt)
+	// const txt = "bici coche balón _playstation bici coche peluche";
+	// function contar(txt){
+	// 	let texto = txt.split(" ")
+	// 	for(let palabra of texto){
+	// 		console.log(palabra)
+	// 	}
+	// }
+	// contar(txt)
+
+const txt = "bici coche balón _playstation bici coche bici bici peluche";
+let texto = txt.split(" ")
+const specimens = texto.filter((palabra, i) => i == 0 ? true : texto[i - 1] != palabra );
+
+const counterSpecimens = specimens.map(spec => {
+    return {palabra: spec, count: 0};
+});
+console.log(counterSpecimens)
+counterSpecimens.map((countSpec, i) =>{
+    const actualSpecLength = texto.filter(palabra => palabra === countSpec.palabra).length;
+    countSpec.count = actualSpecLength;
+})
+
+console.log(counterSpecimens);
 	</script>
 </body>
 </html>
